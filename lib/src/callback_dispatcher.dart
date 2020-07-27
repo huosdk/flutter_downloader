@@ -19,8 +19,7 @@ void callbackDispatcher() {
 
     final String id = args[1];
     final int status = args[2];
-    final int progress = args[3];
-
+    final num progress = args[3];
     callback(id, DownloadTaskStatus(status), progress);
   });
 
