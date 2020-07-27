@@ -29,7 +29,7 @@
 #define ERROR_NOT_INITIALIZED [FlutterError errorWithCode:@"not_initialized" message:@"initialize() must called first" details:nil]
 #define ERROR_INVALID_TASK_ID [FlutterError errorWithCode:@"invalid_task_id" message:@"not found task corresponding to given task id" details:nil]
 
-#define STEP_UPDATE 10
+#define STEP_UPDATE 0.01
 
 @interface FlutterDownloaderPlugin()<NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate>
 {
@@ -858,9 +858,9 @@ static BOOL debug = YES;
         }
     } else {
         NSString *taskId = [self identifierForTask:downloadTask];
-        int progress = round(totalBytesWritten * 100 / (double)totalBytesExpectedToWrite);
+        double progress = totalBytesWritten * 100 / (double)totalBytesExpectedToWrite;
         NSNumber *lastProgress = _runningTaskById[taskId][KEY_PROGRESS];
-        if (([lastProgress intValue] == 0 || (progress > [lastProgress intValue] + STEP_UPDATE) || progress == 100) && progress != [lastProgress intValue]) {
+        if (([lastProgress doubleValue] == 0 || (progress > [lastProgress doubleValue] + STEP_UPDATE) || progress == 100) && progress != [lastProgress doubleValue]) {
             [self sendUpdateProgressForTaskId:taskId inStatus:@(STATUS_RUNNING) andProgress:@(progress)];
             _runningTaskById[taskId][KEY_PROGRESS] = @(progress);
         }
