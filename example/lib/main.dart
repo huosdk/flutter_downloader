@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   static void downloadCallback(
-      String id, DownloadTaskStatus status, int progress) {
+      String id, DownloadTaskStatus status, double progress) {
     if (debug) {
       print(
           'Background Isolate Callback: task ($id) is in status ($status) and process ($progress)');

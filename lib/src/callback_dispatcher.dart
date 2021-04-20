@@ -15,7 +15,7 @@ void callbackDispatcher() {
     final List<dynamic> args = call.arguments;
 
     final Function callback = PluginUtilities.getCallbackFromHandle(
-        CallbackHandle.fromRawHandle(args[0]));
+        CallbackHandle.fromRawHandle(args[0]))!;
 
     final String id = args[1];
     final int status = args[2];

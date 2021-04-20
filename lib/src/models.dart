@@ -2,15 +2,15 @@
 /// A class defines a set of possible statuses of a download task
 ///
 class DownloadTaskStatus {
-  final int _value;
+  final int? _value;
 
-  const DownloadTaskStatus(int value) : _value = value;
+  const DownloadTaskStatus(int? value) : _value = value;
 
-  int get value => _value;
+  int? get value => _value;
 
-  get hashCode => _value;
+  get hashCode => _value!;
 
-  operator ==(status) => status._value == this._value;
+  // operator ==(status) => status._value == this._value;
 
   toString() => 'DownloadTaskStatus($_value)';
 
@@ -37,13 +37,13 @@ class DownloadTaskStatus {
 /// * [savedDir] the absolute path of the directory where the downloaded file is saved
 ///
 class DownloadTask {
-  final String taskId;
-  final DownloadTaskStatus status;
-  final int progress;
-  final String url;
-  final String filename;
-  final String savedDir;
-  final int timeCreated;
+  final String? taskId;
+  final DownloadTaskStatus? status;
+  final int? progress;
+  final String? url;
+  final String? filename;
+  final String? savedDir;
+  final int? timeCreated;
 
   DownloadTask(
       {this.taskId,
